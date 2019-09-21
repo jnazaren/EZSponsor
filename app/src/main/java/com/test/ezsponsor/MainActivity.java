@@ -3,6 +3,7 @@ package com.test.ezsponsor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         AppCenter.start(getApplication(), "a24aa30c-220e-4534-a84e-b931c6cba18d",
-            Analytics.class, Crashes.class); // microsoft app center integration
+            Analytics.class, Crashes.class, Auth.class); // microsoft app center integration
 
 
         mTextMessage = (TextView) findViewById(R.id.message);
@@ -60,6 +61,41 @@ public class MainActivity extends AppCompatActivity {
     {
         getMenuInflater().inflate( R.menu.header, menu );
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            //Back button
+            case android.R.id.home:
+                //If this activity started from other activity
+                finish();
+
+            /*If you wish to open new activity and close this one
+            startNewActivity();
+            */
+                return true;
+            case R.id.action_favorite:
+                Auth.signIn().thenAccept(new AppCenterConsumer<SignInResult>() {
+
+                    @Override
+                    public void accept(SignInResult signInResult) {
+
+                        if (signInResult.getException() == null) {
+
+                            // Sign-in succeeded.
+                            String accountId = signInResult.getUserInformation().getAccountId();
+                        } else {
+
+                            // Do something with sign in failure.
+                            Exception signInFailureException = signInResult.getException();
+                        }
+                    }
+                });
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
