@@ -19,5 +19,6 @@
         "Hi! My name is Michael. I've been homeless for 5 years, and I currently need help with…\n\n"
     </string>
     <string name="ClientName">Michael</string>
+    <string name="CompletedTasks">Fulfilled Donations</string>
     <string name="donateButton">Donate</string>
 </resources>

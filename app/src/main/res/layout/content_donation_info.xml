@@ -26,15 +26,34 @@
 
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/large_text"
                 android:id="@+id/textView2"/>
 
         <ListView
                 android:layout_width="match_parent"
-                android:layout_height="448dp"
-                android:id="@+id/listView"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/listView"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"/>
+
+        <TextView
+                android:text="@string/CompletedTasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:padding="@dimen/text_margin"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"/>
+
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/completedListView"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

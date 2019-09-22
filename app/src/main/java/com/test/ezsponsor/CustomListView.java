@@ -2,15 +2,13 @@ package com.test.ezsponsor;
 
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.*;
 
 public class CustomListView extends ArrayAdapter<String> {
 
@@ -19,8 +17,9 @@ public class CustomListView extends ArrayAdapter<String> {
     private final String[] subtitle;
     private final Integer[] imgid;
     private final Integer[] progress;
+    private Boolean completed;
 
-    public CustomListView(Activity context, String[] maintitle,String[] subtitle, Integer[] imgid, Integer[] progress) {
+    CustomListView(Activity context, String[] maintitle, String[] subtitle, Integer[] imgid, Integer[] progress, Boolean completed) {
         super(context, R.layout.mylist, maintitle);
         // TODO Auto-generated constructor stub
 
@@ -29,6 +28,7 @@ public class CustomListView extends ArrayAdapter<String> {
         this.subtitle=subtitle;
         this.imgid=imgid;
         this.progress = progress;
+        this.completed = completed;
 
     }
 
@@ -48,6 +48,13 @@ public class CustomListView extends ArrayAdapter<String> {
         progressBar.setMin(0);
         progressBar.setMax(100);
         progressBar.setProgress(progress[position]);
+
+        if (this.completed) {
+            final Button donateButton = (Button) rowView.findViewById(R.id.button);
+            donateButton.setBackgroundColor(Color.parseColor("#3d961d"));
+            donateButton.setText("COMPLETED");
+            donateButton.setClickable(false);
+        }
 
         return rowView;
 
