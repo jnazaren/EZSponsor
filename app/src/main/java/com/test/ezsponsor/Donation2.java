@@ -15,7 +15,7 @@ public class Donation2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donation2);
+        setContentView(R.layout.activity_donation_confirm);
         final Button button = (Button) findViewById(R.id.amount);
         final String message = getIntent().getStringExtra("sender");
         Log.i("Hi", "HELLO");

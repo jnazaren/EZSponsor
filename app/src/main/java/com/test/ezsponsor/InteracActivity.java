@@ -1,37 +1,19 @@
 package com.test.ezsponsor;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
-import android.view.Gravity;
 import android.widget.*;
-import net.minidev.json.parser.JSONParser;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.auth.SignInResult;
-import com.microsoft.appcenter.crashes.Crashes;
-import com.microsoft.appcenter.auth.Auth;
-import com.microsoft.appcenter.utils.async.AppCenterConsumer;
 import okhttp3.*;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class InteracActivity extends AppCompatActivity {
 
     private Button button;
 
@@ -117,11 +99,11 @@ public class MainActivity extends AppCompatActivity {
                             myResponse = response.body().string();
                             sender = myResponse.substring(55, myResponse.length() - 2);
                             // Log.i("bb", myResponse);
-                            MainActivity.this.runOnUiThread(new Runnable() {
+                            InteracActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     Log.i("tt", sender);
-                                    Intent intent = new Intent(MainActivity.this, Donation2.class);
+                                    Intent intent = new Intent(InteracActivity.this, Donation2.class);
                                     intent.putExtra("sender", sender);
                                     startActivity(intent);
                                 }
@@ -134,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 // System.out.println(response);
 
-                ProgressDialog progressDialog = ProgressDialog.show(MainActivity.this, "",
+                ProgressDialog progressDialog = ProgressDialog.show(InteracActivity.this, "",
                         "Processing. Please wait...", true);
             }
         });
