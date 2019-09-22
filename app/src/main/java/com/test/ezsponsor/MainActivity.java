@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // length is bounded by 256 Character
+
                 String amount = editTextName.getText().toString();
                 byte[] array = new byte[256];
                 new Random().nextBytes(array);
