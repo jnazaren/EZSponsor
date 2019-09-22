@@ -2,6 +2,8 @@ package com.test.ezsponsor;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -49,11 +51,20 @@ public class CustomListView extends ArrayAdapter<String> {
         progressBar.setMax(100);
         progressBar.setProgress(progress[position]);
 
+        final Button donateButton = (Button) rowView.findViewById(R.id.button);
+        donateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, InteracActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
         if (this.completed) {
-            final Button donateButton = (Button) rowView.findViewById(R.id.button);
-            donateButton.setBackgroundColor(Color.parseColor("#3d961d"));
-            donateButton.setText("COMPLETED");
-            donateButton.setClickable(false);
+            final Button dButton = (Button) rowView.findViewById(R.id.button);
+            dButton.setBackgroundColor(Color.parseColor("#3d961d"));
+            dButton.setText("COMPLETED");
+            dButton.setClickable(false);
         }
 
         return rowView;

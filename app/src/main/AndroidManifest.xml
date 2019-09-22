@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-feature android:name="android.hardware.screen.portrait" />
+
+    <uses-feature android:name="android.hardware.screen.portrait"/>
 
     <application
             android:allowBackup="true"
@@ -14,11 +15,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Donation2">
+        </activity>
+        <activity android:name=".InteracActivity">
+        </activity>
         <activity
                 android:name=".DonationInfo"
                 android:parentActivityName=".MainActivity"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.test.ezsponsor.MainActivity"/>
